@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.css" />
+    <title>Google Login</title>
+</head>
+
+<body>
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+         Your app may use that space for branding, controls and other customizations.-->
+    <h1>Welcome to My Awesome App</h1>
+    <div id="firebaseui-auth-container"></div>
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-auth.js"></script>
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/4.2.0/firebaseui.js"></script>
+
+    <script type="text/javascript">
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyD0zQlSlyndc5DBtQbgD9Is6XxDrmfT2Ls",
+            authDomain: "hotdog-b14ac.firebaseapp.com",
+            databaseURL: "https://hotdog-b14ac.firebaseio.com",
+            projectId: "hotdog-b14ac",
+            storageBucket: "hotdog-b14ac.appspot.com",
+            messagingSenderId: "770430463057",
+            appId: "1:770430463057:web:c13732fcca7ced1b3a1c70"
+        }
+
+        firebase.initializeApp(firebaseConfig)
+
+        // FirebaseUI config.
+        var uiConfig = {
+            signInSuccessUrl: 'index.html',
+            signInOptions: [
+                // Leave the lines as is for the providers you want to offer your users.
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID
+            ],
+        };
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        const ui = new firebaseui.auth.AuthUI(firebase.auth());
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+</body>
+
+</html>
