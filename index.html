@@ -54,12 +54,12 @@
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 console.log('user exists')
-                document.querySelector('#firebaseui-auth-container').style.display = none
-                document.querySelector('#signout').style.display = block
+                document.getElementById('firebaseui-auth-container').style.display = 'none'
+                document.getElementById('signout').style.display = 'block'
 
             } else {
-                document.querySelector('#firebaseui-auth-container').style.display = block
-                document.querySelector('#signout').style.display = none
+                document.getElementById('firebaseui-auth-container').style.display = 'block'
+                document.getElementById('signout').style.display = 'none'
 
             }
         })
