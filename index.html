@@ -14,6 +14,7 @@
          Your app may use that space for branding, controls and other customizations.-->
     <h1>Welcome to My Awesome App</h1>
     <div id="firebaseui-auth-container"></div>
+    <button id="signout"></button>
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
@@ -38,7 +39,7 @@
 
         // FirebaseUI config.
         var uiConfig = {
-            signInSuccessUrl: 'yay.html',
+            signInSuccessUrl: 'index.html',
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID
@@ -49,6 +50,21 @@
         const ui = new firebaseui.auth.AuthUI(firebase.auth());
         // The start method will wait until the DOM is loaded.
         ui.start('#firebaseui-auth-container', uiConfig);
+
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                document.querySelector('#firebaseui-auth-container').style.display = none
+                document.querySelector('#signout').style.display = block
+
+            } else {
+                document.querySelector('#firebaseui-auth-container').style.display = block
+                document.querySelector('#signout').style.display = none
+
+            }
+        })
+        document.querySelector('#signout').addEventListener('click', e => {
+            firebase.auth().signOut()
+        })
     </script>
 </body>
 
