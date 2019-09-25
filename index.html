@@ -14,7 +14,7 @@
          Your app may use that space for branding, controls and other customizations.-->
     <h1>Welcome to My Awesome App</h1>
     <div id="firebaseui-auth-container"></div>
-    <button id="signout"></button>
+    <button id="signout">Signout</button>
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
@@ -53,6 +53,7 @@
 
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
+                console.log('user exists')
                 document.querySelector('#firebaseui-auth-container').style.display = none
                 document.querySelector('#signout').style.display = block
 
